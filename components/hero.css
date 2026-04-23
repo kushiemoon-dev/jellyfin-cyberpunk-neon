@@ -1,0 +1,73 @@
+/* ── Hero / Backdrop ── */
+
+.itemBackdrop,
+.backdropContainer {
+  background: var(--cn-base) !important;
+}
+
+/* Gradient overlay left-to-right sur hero */
+.itemBackdropFadeBottom,
+.itemBackdropFade {
+  background: linear-gradient(
+    90deg,
+    var(--cn-base) 25%,
+    rgba(13, 10, 24, 0.7) 60%,
+    transparent 100%
+  ) !important;
+}
+
+/* Scan lines décoratives sur hero */
+.itemBackdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 44, 247, 0.015) 2px,
+    rgba(255, 44, 247, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ligne accent bas hero */
+.itemBackdrop::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--cn-primary);
+  z-index: 2;
+}
+
+/* Titre hero */
+.itemName,
+.itemDetailPage .itemName {
+  font-family: var(--cn-font-mono) !important;
+  color: var(--cn-text) !important;
+  text-shadow: 1px 1px 0 rgba(255, 0, 60, 0.4) !important;
+  font-weight: 800 !important;
+}
+
+.itemName::before {
+  content: "▸ ";
+  color: var(--cn-primary);
+}
+
+/* Metadata sous titre (année, durée, rating) */
+.mediaInfoItem,
+.itemMiscInfo {
+  color: var(--cn-tertiary) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: var(--cn-size-sm) !important;
+}
+
+.itemMiscInfo::before {
+  content: "// ";
+  color: var(--cn-tertiary);
+  opacity: 0.6;
+}

@@ -1,0 +1,173 @@
+/* ── Admin dashboard — MUI overrides ── */
+
+/* AppBar header */
+.MuiAppBar-root {
+  background: var(--cn-base-alt) !important;
+  border-bottom: 1px solid var(--cn-border-strong) !important;
+  box-shadow: none !important;
+}
+
+/* Drawer sidebar */
+.MuiDrawer-paper {
+  background: var(--cn-base-alt) !important;
+  border-right: 1px solid var(--cn-border) !important;
+}
+
+/* Section subheaders */
+.MuiListSubheader-root {
+  background: transparent !important;
+  color: var(--cn-secondary) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase;
+}
+
+/* Nav items */
+.MuiListItemButton-root {
+  color: var(--cn-text-muted) !important;
+  font-family: var(--cn-font-mono) !important;
+}
+
+.MuiListItemButton-root:hover {
+  background: rgba(255,44,247,0.06) !important;
+  color: var(--cn-primary) !important;
+}
+
+.MuiListItemButton-root.Mui-selected {
+  background: rgba(255,44,247,0.1) !important;
+  color: var(--cn-primary) !important;
+  border-left: 2px solid var(--cn-primary);
+}
+
+.MuiListItemButton-root.Mui-selected:hover {
+  background: rgba(255,44,247,0.15) !important;
+}
+
+/* Icons in nav */
+.MuiListItemIcon-root {
+  color: inherit !important;
+  min-width: 36px !important;
+}
+
+/* Nav text */
+.MuiListItemText-primary {
+  font-family: var(--cn-font-mono) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Dividers */
+.MuiDivider-root {
+  border-color: var(--cn-border) !important;
+}
+
+/* Content panels / cards */
+.MuiPaper-root {
+  background: var(--cn-base-alt) !important;
+  color: var(--cn-text) !important;
+}
+
+.MuiCard-root {
+  background: var(--cn-base-alt) !important;
+  border: 1px solid var(--cn-border) !important;
+  border-radius: 3px !important;
+  box-shadow: none !important;
+}
+
+/* Primary action button (Actualiser etc.) */
+.MuiButton-containedPrimary {
+  background: var(--cn-primary) !important;
+  color: var(--cn-base) !important;
+  clip-path: polygon(0 0, 100% 0, 97% 100%, 0 100%);
+  border-radius: 0 !important;
+  font-family: var(--cn-font-mono) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em;
+  box-shadow: none !important;
+}
+
+.MuiButton-containedPrimary:hover {
+  background: var(--cn-primary) !important;
+  opacity: 0.85;
+  box-shadow: none !important;
+}
+
+/* Error buttons (Redémarrer, Éteindre) */
+.MuiButton-containedError {
+  clip-path: polygon(0 0, 100% 0, 97% 100%, 0 100%);
+  border-radius: 0 !important;
+  font-family: var(--cn-font-mono) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em;
+  box-shadow: none !important;
+}
+
+/* Text/link buttons */
+.MuiButton-textInherit,
+.MuiButton-text {
+  color: var(--cn-tertiary) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: 11px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Icon buttons */
+.MuiIconButton-root {
+  color: var(--cn-text-muted) !important;
+}
+
+.MuiIconButton-root:hover {
+  background: rgba(255,44,247,0.08) !important;
+  color: var(--cn-primary) !important;
+}
+
+/* Typography */
+.MuiTypography-h5,
+.MuiTypography-h6 {
+  font-family: var(--cn-font-mono) !important;
+  color: var(--cn-text) !important;
+}
+
+.MuiTypography-h3 {
+  font-family: var(--cn-font-mono) !important;
+  color: var(--cn-primary) !important;
+}
+
+.MuiTypography-body1 { color: var(--cn-text) !important; }
+.MuiTypography-body2 { color: var(--cn-text-muted) !important; }
+
+/* Progress bars (scan activité) */
+.MuiLinearProgress-root { background: var(--cn-border) !important; }
+.MuiLinearProgress-bar  { background: var(--cn-primary) !important; }
+
+/* Avatar */
+.MuiAvatar-colorDefault {
+  background: linear-gradient(135deg, var(--cn-primary), var(--cn-tertiary)) !important;
+}
+
+/* Menu / Popover */
+.MuiMenu-paper,
+.MuiPopover-paper {
+  background: var(--cn-base-alt) !important;
+  border: 1px solid var(--cn-border-strong) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5) !important;
+}
+
+.MuiMenuItem-root {
+  color: var(--cn-text-muted) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: 11px !important;
+}
+
+.MuiMenuItem-root:hover {
+  background: rgba(255,44,247,0.06) !important;
+  color: var(--cn-primary) !important;
+}
+
+/* Toolbar */
+.MuiToolbar-root { min-height: 48px !important; }

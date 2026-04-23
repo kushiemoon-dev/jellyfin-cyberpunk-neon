@@ -1,0 +1,68 @@
+/* ── Header / Nav ── */
+
+.skinHeader {
+  background: var(--cn-base-alt) !important;
+  border-bottom: 1px solid var(--cn-border-strong) !important;
+  font-family: var(--cn-font-mono) !important;
+}
+
+.skinHeader-withBackground {
+  background: linear-gradient(180deg, var(--cn-base-alt), transparent) !important;
+}
+
+/* Logo zone */
+.headerTabs .emby-tab-button,
+.headerTabs .emby-tab-button:focus {
+  color: var(--cn-text-muted);
+  font-family: var(--cn-font-mono);
+  font-size: var(--cn-size-sm);
+  font-weight: var(--cn-weight-bold);
+  letter-spacing: var(--cn-tracking);
+  text-transform: uppercase;
+}
+
+.headerTabs .emby-tab-button.is-active,
+.headerTabs .emby-tab-button[data-selected="true"] {
+  color: var(--cn-primary);
+}
+
+/* Prefix // sur premier item nav */
+.headerTabs .emby-tab-button:first-child::before {
+  content: "// ";
+  color: var(--cn-tertiary);
+  opacity: 0.7;
+}
+
+/* Search bar */
+.headerSearchInput {
+  background: var(--cn-base) !important;
+  border: 1px solid var(--cn-border) !important;
+  color: var(--cn-tertiary) !important;
+  font-family: var(--cn-font-mono) !important;
+  border-radius: 2px !important;
+}
+
+.headerSearchInput::placeholder {
+  color: var(--cn-text-muted);
+  opacity: 0.5;
+}
+
+/* Drawer / sidebar */
+.mainDrawer {
+  background: var(--cn-base-alt) !important;
+  border-right: 1px solid var(--cn-border) !important;
+}
+
+.navMenuOption {
+  color: var(--cn-text-muted) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: var(--cn-size-sm) !important;
+  text-transform: uppercase;
+  letter-spacing: var(--cn-tracking);
+}
+
+.navMenuOption.is-selected,
+.navMenuOption:hover {
+  color: var(--cn-primary) !important;
+  background: rgba(255, 44, 247, 0.06) !important;
+}

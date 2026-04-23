@@ -1,0 +1,14 @@
+:root {
+  --cn-base:         #0d0a18;
+  --cn-base-alt:     #0a0713;
+  --cn-base-hover:   #13102a;
+  --cn-primary:      #ff2cf7;
+  --cn-secondary:    #ff003c;
+  --cn-tertiary:     #00fff2;
+  --cn-text:         #e8e0ff;
+  --cn-text-muted:   #c9b8ff;
+  --cn-text-accent:  #ff2cf7;
+  --cn-border:       rgba(255, 44, 247, 0.2);
+  --cn-border-strong:rgba(255, 44, 247, 0.35);
+  --cn-border-cyan:  rgba(0, 255, 242, 0.3);
+}

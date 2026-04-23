@@ -1,0 +1,75 @@
+/* ── Cards / Posters ── */
+
+.card {
+  border-radius: 3px !important;
+}
+
+.cardImageContainer {
+  background-color: var(--cn-base-alt) !important;
+  border: 1px solid var(--cn-border) !important;
+  border-radius: 3px !important;
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+
+/* Barre accent bas poster */
+.cardImageContainer::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 4px;
+  right: 4px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cn-primary), transparent 80%);
+}
+
+.card:hover .cardImageContainer {
+  border-color: var(--cn-border-strong) !important;
+}
+
+/* Poster currently playing / featured */
+.card.playing .cardImageContainer,
+.card[data-playing] .cardImageContainer {
+  border-color: var(--cn-tertiary) !important;
+  box-shadow: inset 0 0 8px rgba(0, 255, 242, 0.12) !important;
+}
+
+.card.playing .cardImageContainer::after {
+  background: var(--cn-tertiary);
+  box-shadow: 0 0 4px var(--cn-tertiary);
+}
+
+/* Titre carte */
+.cardText,
+.cardText-secondary {
+  font-family: var(--cn-font-mono) !important;
+  color: var(--cn-primary) !important;
+  font-size: var(--cn-size-xs) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.cardText-secondary {
+  color: var(--cn-text-muted) !important;
+  opacity: 0.7;
+}
+
+/* Progress bar en cours */
+.cardFooter .itemProgressBar {
+  background: rgba(255, 44, 247, 0.2) !important;
+}
+
+.cardFooter .itemProgressBar .itemProgressBarForeground {
+  background: var(--cn-primary) !important;
+}
+
+/* Badge (4K, HDR, etc.) */
+.badge {
+  background: var(--cn-base-alt) !important;
+  border: 1px solid var(--cn-border) !important;
+  color: var(--cn-tertiary) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: var(--cn-size-xs) !important;
+  border-radius: 1px !important;
+}

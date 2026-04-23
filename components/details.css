@@ -1,0 +1,143 @@
+/* ── Pages détail item ── */
+
+/* Fix double ▸ — originalTitle (sous-titre) ne prend pas le préfixe */
+.itemName.originalTitle::before { display: none; }
+
+/* Boutons action (▶ play, chapters, check, heart, dots) */
+.detailButton {
+  color: var(--cn-primary) !important;
+  border: 1px solid var(--cn-border) !important;
+  border-radius: 50% !important;
+  transition: background 0.15s, border-color 0.15s;
+}
+.detailButton:hover {
+  background: rgba(255,44,247,0.1) !important;
+  border-color: var(--cn-border-strong) !important;
+}
+.btnPlay.detailButton {
+  background: var(--cn-primary) !important;
+  color: var(--cn-base) !important;
+  border-color: transparent !important;
+}
+.btnPlay.detailButton:hover { opacity: 0.85; }
+
+/* Labels video/audio/sous-titres */
+.selectLabel,
+.mediaInfoLabel,
+.itemDetailTableLabel {
+  color: var(--cn-text-muted) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: 10px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Selects audio/sous-titres */
+.emby-select-withcolor,
+.emby-select,
+.detailTrackSelect {
+  background: var(--cn-base) !important;
+  background-color: var(--cn-base) !important;
+  border: 1px solid var(--cn-border) !important;
+  color: var(--cn-text) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: 11px !important;
+  border-radius: 2px !important;
+}
+.emby-select-withcolor:focus,
+.emby-select:focus { border-color: var(--cn-primary) !important; outline: none !important; }
+
+/* Valeurs tableau info (1080p HEVC SDR etc.) */
+.itemDetailTableValue { color: var(--cn-tertiary) !important; font-family: var(--cn-font-mono) !important; }
+
+/* Originalité / titre original small */
+.itemName.originalTitle {
+  color: var(--cn-text-muted) !important;
+  font-size: 0.75em !important;
+  font-family: var(--cn-font-mono) !important;
+  opacity: 0.7;
+}
+
+.detailPageContent,
+.itemDetailPage {
+  background: var(--cn-base) !important;
+}
+
+/* Genres / tags */
+.genreItem,
+.personName {
+  color: var(--cn-tertiary) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: var(--cn-size-sm) !important;
+  border: 1px solid var(--cn-border-cyan) !important;
+  border-radius: 2px !important;
+  padding: 2px 6px !important;
+}
+
+/* Note / rating étoiles */
+.starRatingContainer .iconstar {
+  color: var(--cn-primary) !important;
+}
+
+.communityRating {
+  color: var(--cn-primary) !important;
+  font-family: var(--cn-font-mono) !important;
+}
+
+/* Overview / synopsis */
+.overview {
+  color: var(--cn-text) !important;
+  font-size: var(--cn-size-base) !important;
+  line-height: 1.6;
+}
+
+/* Épisodes listing */
+.listItem {
+  background: var(--cn-base-alt) !important;
+  border-bottom: 1px solid var(--cn-border) !important;
+  font-family: var(--cn-font-mono) !important;
+}
+
+.listItem:hover {
+  background: var(--cn-base-hover) !important;
+  border-color: var(--cn-border-strong) !important;
+}
+
+.listItemBody .listItemBodyText {
+  color: var(--cn-text) !important;
+}
+
+.listItemBody .secondary {
+  color: var(--cn-text-muted) !important;
+  font-size: var(--cn-size-sm) !important;
+}
+
+/* Numéro épisode */
+.listItemIndexNumber {
+  color: var(--cn-primary) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-weight: var(--cn-weight-bold) !important;
+}
+
+/* Dialog / modale */
+.dialogContainer .dialog {
+  background: var(--cn-base-alt) !important;
+  border: 1px solid var(--cn-border-strong) !important;
+  border-radius: 2px !important;
+}
+
+/* Input fields */
+.emby-input,
+.emby-textarea {
+  background: var(--cn-base) !important;
+  border: 1px solid var(--cn-border) !important;
+  color: var(--cn-text) !important;
+  font-family: var(--cn-font-mono) !important;
+  border-radius: 2px !important;
+}
+
+.emby-input:focus,
+.emby-textarea:focus {
+  border-color: var(--cn-primary) !important;
+  outline: none !important;
+}

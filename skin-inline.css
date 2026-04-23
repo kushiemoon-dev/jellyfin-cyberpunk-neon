@@ -1,0 +1,358 @@
+/* jellyfin-cyberpunk-neon — test inline (coller dans Jellyfin > Branding > Custom CSS) */
+
+/* ── Tokens ── */
+:root {
+  --cn-base:          #0d0a18;
+  --cn-base-alt:      #0a0713;
+  --cn-base-hover:    #13102a;
+  --cn-primary:       #ff2cf7;
+  --cn-secondary:     #ff003c;
+  --cn-tertiary:      #00fff2;
+  --cn-text:          #e8e0ff;
+  --cn-text-muted:    #c9b8ff;
+  --cn-border:        rgba(255,44,247,0.2);
+  --cn-border-strong: rgba(255,44,247,0.35);
+  --cn-border-cyan:   rgba(0,255,242,0.3);
+  --cn-font-mono: 'JetBrains Mono','Courier New',monospace;
+}
+
+/* ── Base ── */
+body { background: var(--cn-base) !important; color: var(--cn-text) !important; }
+
+/* ── Header ── */
+.skinHeader {
+  background: var(--cn-base-alt) !important;
+  border-bottom: 1px solid var(--cn-border-strong) !important;
+  font-family: var(--cn-font-mono) !important;
+}
+.skinHeader-withBackground {
+  background: linear-gradient(180deg, var(--cn-base-alt), transparent) !important;
+}
+.headerTabs .emby-tab-button {
+  color: var(--cn-text-muted);
+  font-family: var(--cn-font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.headerTabs .emby-tab-button.is-active,
+.headerTabs .emby-tab-button[data-selected="true"] {
+  color: var(--cn-primary);
+}
+.headerTabs .emby-tab-button:first-child::before {
+  content: "// ";
+  color: var(--cn-tertiary);
+  opacity: 0.7;
+}
+.headerSearchInput {
+  background: var(--cn-base) !important;
+  border: 1px solid var(--cn-border) !important;
+  color: var(--cn-tertiary) !important;
+  font-family: var(--cn-font-mono) !important;
+  border-radius: 2px !important;
+}
+.headerSearchInput::placeholder { color: var(--cn-text-muted); opacity: 0.5; }
+.headerButton { color: var(--cn-text-muted) !important; }
+.headerButton:hover { color: var(--cn-primary) !important; }
+
+/* ── Drawer / sidebar ── */
+.mainDrawer {
+  background: var(--cn-base-alt) !important;
+  border-right: 1px solid var(--cn-border) !important;
+}
+.navMenuOption {
+  color: var(--cn-text-muted) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: 11px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.navMenuOption.is-selected,
+.navMenuOption:hover {
+  color: var(--cn-primary) !important;
+  background: rgba(255,44,247,0.06) !important;
+}
+
+/* ── Fond global ── */
+.backgroundContainer,
+.mainAnimatedPages,
+.page,
+.detailPageContent,
+.itemDetailPage {
+  background: var(--cn-base) !important;
+}
+body:has(video) .page,
+body:has(.videoPlayerContainer) .page { background: transparent !important; }
+
+/* ── Hero / backdrop ── */
+.itemBackdrop,
+.backdropContainer { background: var(--cn-base) !important; }
+.itemBackdropFadeBottom,
+.itemBackdropFade {
+  background: linear-gradient(
+    90deg, var(--cn-base) 25%, rgba(13,10,24,0.7) 60%, transparent 100%
+  ) !important;
+}
+.itemBackdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(255,44,247,0.015) 2px, rgba(255,44,247,0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+.itemBackdrop::before {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--cn-primary);
+  z-index: 2;
+}
+.itemName,
+.itemDetailPage .itemName {
+  font-family: var(--cn-font-mono) !important;
+  color: var(--cn-text) !important;
+  text-shadow: 1px 1px 0 rgba(255,0,60,0.4) !important;
+  font-weight: 800 !important;
+}
+.itemName::before { content: "▸ "; color: var(--cn-primary); }
+.mediaInfoItem,
+.itemMiscInfo {
+  color: var(--cn-tertiary) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: 11px !important;
+}
+.itemMiscInfo::before { content: "// "; color: var(--cn-tertiary); opacity: 0.6; }
+
+/* ── Cards / Posters ── */
+.card { border-radius: 3px !important; }
+.cardImageContainer {
+  background-color: var(--cn-base-alt) !important;
+  border: 1px solid var(--cn-border) !important;
+  border-radius: 3px !important;
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+.cardImageContainer::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 4px; right: 4px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cn-primary), transparent 80%);
+}
+.card:hover .cardImageContainer { border-color: var(--cn-border-strong) !important; }
+.card.playing .cardImageContainer { border-color: var(--cn-tertiary) !important; box-shadow: inset 0 0 8px rgba(0,255,242,0.12) !important; }
+.card.playing .cardImageContainer::after { background: var(--cn-tertiary); }
+.cardText {
+  font-family: var(--cn-font-mono) !important;
+  color: var(--cn-primary) !important;
+  font-size: 9px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.cardText-secondary { color: var(--cn-text-muted) !important; font-family: var(--cn-font-mono) !important; font-size: 9px !important; opacity: 0.7; }
+.itemProgressBar { background: rgba(255,44,247,0.2) !important; }
+.itemProgressBar .itemProgressBarForeground { background: var(--cn-primary) !important; }
+.badge {
+  background: var(--cn-base-alt) !important;
+  border: 1px solid var(--cn-border) !important;
+  color: var(--cn-tertiary) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: 9px !important;
+  border-radius: 1px !important;
+}
+
+/* ── Section labels ── */
+.sectionTitle,
+.sectionTitleButton {
+  color: var(--cn-primary) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.sectionTitle::before,
+.sectionTitleButton::before { content: "[ "; color: var(--cn-secondary); }
+.sectionTitle::after,
+.sectionTitleButton::after  { content: " ]"; color: var(--cn-secondary); }
+.sectionTitle-cards a,
+.more-button { color: var(--cn-tertiary) !important; font-family: var(--cn-font-mono) !important; font-size: 9px !important; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--cn-base-alt); }
+::-webkit-scrollbar-thumb { background: var(--cn-border-strong); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--cn-primary); }
+
+/* ── Buttons ── */
+.emby-button.raised:not(.cancel):not(.cancelButton):not(.btnDelete) {
+  background: var(--cn-primary) !important;
+  color: var(--cn-base) !important;
+  clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%);
+  border-radius: 0 !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.emby-button.raised:not(.cancel):not(.cancelButton):not(.btnDelete):hover { opacity: 0.85; }
+.emby-button.raised.cancel {
+  background: transparent !important;
+  color: var(--cn-tertiary) !important;
+  border: 1px solid var(--cn-border-cyan) !important;
+  clip-path: none !important;
+  border-radius: 2px !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.emby-button.raised.cancel:hover {
+  border-color: var(--cn-tertiary) !important;
+  background: rgba(0,255,242,0.05) !important;
+}
+.emby-button:not(.raised),
+.emby-button.emby-button-flat {
+  background: transparent !important;
+  color: var(--cn-tertiary) !important;
+  border: 1px solid var(--cn-border-cyan) !important;
+  border-radius: 2px !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: 11px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.emby-button:not(.raised):hover {
+  border-color: var(--cn-tertiary) !important;
+  background: rgba(0,255,242,0.05) !important;
+}
+.btnPlay,
+.playButton {
+  background: var(--cn-primary) !important;
+  color: var(--cn-base) !important;
+  clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%);
+  border-radius: 0 !important;
+  font-family: var(--cn-font-mono) !important;
+  font-weight: 700 !important;
+}
+.cancelButton,
+.btnDelete { color: var(--cn-secondary) !important; border-color: rgba(255,0,60,0.3) !important; }
+
+/* ── Detail pages ── */
+
+/* Fix double ▸ */
+.itemName.originalTitle::before { display: none; }
+.itemName.originalTitle { color: var(--cn-text-muted) !important; font-size: 0.75em !important; font-family: var(--cn-font-mono) !important; opacity: 0.7; }
+
+/* Boutons action détail */
+.detailButton { color: var(--cn-primary) !important; border: 1px solid var(--cn-border) !important; border-radius: 50% !important; }
+.detailButton:hover { background: rgba(255,44,247,0.1) !important; border-color: var(--cn-border-strong) !important; }
+.btnPlay.detailButton { background: var(--cn-primary) !important; color: var(--cn-base) !important; border-color: transparent !important; }
+
+/* Labels + selects */
+.selectLabel, .mediaInfoLabel, .itemDetailTableLabel { color: var(--cn-text-muted) !important; font-family: var(--cn-font-mono) !important; font-size: 10px !important; text-transform: uppercase; letter-spacing: 0.04em; }
+.emby-select-withcolor, .emby-select, .detailTrackSelect { background-color: var(--cn-base) !important; border: 1px solid var(--cn-border) !important; color: var(--cn-text) !important; font-family: var(--cn-font-mono) !important; font-size: 11px !important; border-radius: 2px !important; }
+.emby-select-withcolor:focus, .emby-select:focus { border-color: var(--cn-primary) !important; outline: none !important; }
+.itemDetailTableValue { color: var(--cn-tertiary) !important; font-family: var(--cn-font-mono) !important; }
+
+/* ── Video player — reset protecteur ── */
+#htmlVideoPlayer, .htmlVideoPlayer, .videoPlayerContainer, #videoPlayer, video { background: #000 !important; display: block; }
+.videoOsd, .videoOsdBottom, .osdContent, .videoOsdTop { background: transparent !important; background-image: none !important; }
+.videoPlayerContainer .itemBackdrop::after, #videoPlayer::after { display: none !important; }
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .skinHeader { padding: 0 10px !important; }
+  .headerTabs .emby-tab-button { font-size: 9px !important; letter-spacing: 0 !important; }
+  .itemName { font-size: 1.3rem !important; }
+  .itemMiscInfo { font-size: 9px !important; }
+  .cardText { font-size: 8px !important; }
+  .sectionTitle, .sectionTitleButton { font-size: 9px !important; letter-spacing: 0.02em !important; }
+  .emby-button.raised:not(.cancel):not(.cancelButton):not(.btnDelete) { clip-path: none !important; border-radius: 2px !important; font-size: 10px !important; }
+  .emby-button.raised.cancel { font-size: 10px !important; }
+  .detailPagePrimaryContainer { flex-direction: column !important; }
+  .detailButton { width: 36px !important; height: 36px !important; }
+  .detailTrackSelect, .emby-select-withcolor { width: 100% !important; }
+  .genreItem { font-size: 9px !important; padding: 2px 4px !important; }
+  ::-webkit-scrollbar { width: 2px; }
+}
+@media (max-width: 400px) {
+  .itemName { font-size: 1.1rem !important; }
+  .detailButton { width: 30px !important; height: 30px !important; }
+}
+
+.genreItem,
+.personName {
+  color: var(--cn-tertiary) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: 11px !important;
+  border: 1px solid var(--cn-border-cyan) !important;
+  border-radius: 2px !important;
+  padding: 2px 6px !important;
+}
+.starRatingContainer .iconstar,
+.communityRating { color: var(--cn-primary) !important; font-family: var(--cn-font-mono) !important; }
+.overview { color: var(--cn-text) !important; line-height: 1.6; }
+.listItem {
+  background: var(--cn-base-alt) !important;
+  border-bottom: 1px solid var(--cn-border) !important;
+  font-family: var(--cn-font-mono) !important;
+}
+.listItem:hover { background: var(--cn-base-hover) !important; border-color: var(--cn-border-strong) !important; }
+.listItemBody .listItemBodyText { color: var(--cn-text) !important; }
+.listItemBody .secondary { color: var(--cn-text-muted) !important; font-size: 11px !important; }
+.listItemIndexNumber { color: var(--cn-primary) !important; font-family: var(--cn-font-mono) !important; font-weight: 700 !important; }
+.dialogContainer .dialog {
+  background: var(--cn-base-alt) !important;
+  border: 1px solid var(--cn-border-strong) !important;
+  border-radius: 2px !important;
+}
+.emby-input,
+.emby-textarea {
+  background: var(--cn-base) !important;
+  border: 1px solid var(--cn-border) !important;
+  color: var(--cn-text) !important;
+  font-family: var(--cn-font-mono) !important;
+  border-radius: 2px !important;
+}
+.emby-input:focus,
+.emby-textarea:focus { border-color: var(--cn-primary) !important; outline: none !important; }
+
+/* ── Admin dashboard — MUI overrides ── */
+.MuiAppBar-root { background: var(--cn-base-alt) !important; border-bottom: 1px solid var(--cn-border-strong) !important; box-shadow: none !important; }
+.MuiDrawer-paper { background: var(--cn-base-alt) !important; border-right: 1px solid var(--cn-border) !important; }
+.MuiListSubheader-root { background: transparent !important; color: var(--cn-secondary) !important; font-family: var(--cn-font-mono) !important; font-size: 9px !important; font-weight: 700 !important; letter-spacing: 0.08em !important; text-transform: uppercase; }
+.MuiListItemButton-root { color: var(--cn-text-muted) !important; font-family: var(--cn-font-mono) !important; }
+.MuiListItemButton-root:hover { background: rgba(255,44,247,0.06) !important; color: var(--cn-primary) !important; }
+.MuiListItemButton-root.Mui-selected { background: rgba(255,44,247,0.1) !important; color: var(--cn-primary) !important; border-left: 2px solid var(--cn-primary); }
+.MuiListItemButton-root.Mui-selected:hover { background: rgba(255,44,247,0.15) !important; }
+.MuiListItemIcon-root { color: inherit !important; min-width: 36px !important; }
+.MuiListItemText-primary { font-family: var(--cn-font-mono) !important; font-size: 11px !important; font-weight: 600 !important; text-transform: uppercase; letter-spacing: 0.04em; }
+.MuiDivider-root { border-color: var(--cn-border) !important; }
+.MuiPaper-root { background: var(--cn-base-alt) !important; color: var(--cn-text) !important; }
+.MuiCard-root { background: var(--cn-base-alt) !important; border: 1px solid var(--cn-border) !important; border-radius: 3px !important; box-shadow: none !important; }
+.MuiButton-containedPrimary { background: var(--cn-primary) !important; color: var(--cn-base) !important; clip-path: polygon(0 0,100% 0,97% 100%,0 100%); border-radius: 0 !important; font-family: var(--cn-font-mono) !important; font-weight: 700 !important; letter-spacing: 0.04em; box-shadow: none !important; }
+.MuiButton-containedPrimary:hover { opacity: 0.85; box-shadow: none !important; }
+.MuiButton-containedError { clip-path: polygon(0 0,100% 0,97% 100%,0 100%); border-radius: 0 !important; font-family: var(--cn-font-mono) !important; font-weight: 700 !important; box-shadow: none !important; }
+.MuiButton-textInherit, .MuiButton-text { color: var(--cn-tertiary) !important; font-family: var(--cn-font-mono) !important; font-size: 11px !important; text-transform: uppercase; letter-spacing: 0.04em; }
+.MuiIconButton-root { color: var(--cn-text-muted) !important; }
+.MuiIconButton-root:hover { background: rgba(255,44,247,0.08) !important; color: var(--cn-primary) !important; }
+.MuiTypography-h5, .MuiTypography-h6 { font-family: var(--cn-font-mono) !important; color: var(--cn-text) !important; }
+.MuiTypography-h3 { font-family: var(--cn-font-mono) !important; color: var(--cn-primary) !important; }
+.MuiTypography-body1 { color: var(--cn-text) !important; }
+.MuiTypography-body2 { color: var(--cn-text-muted) !important; }
+.MuiLinearProgress-root { background: var(--cn-border) !important; }
+.MuiLinearProgress-bar { background: var(--cn-primary) !important; }
+.MuiAvatar-colorDefault { background: linear-gradient(135deg,var(--cn-primary),var(--cn-tertiary)) !important; }
+.MuiMenu-paper, .MuiPopover-paper { background: var(--cn-base-alt) !important; border: 1px solid var(--cn-border-strong) !important; box-shadow: 0 4px 16px rgba(0,0,0,0.5) !important; }
+.MuiMenuItem-root { color: var(--cn-text-muted) !important; font-family: var(--cn-font-mono) !important; font-size: 11px !important; }
+.MuiMenuItem-root:hover { background: rgba(255,44,247,0.06) !important; color: var(--cn-primary) !important; }

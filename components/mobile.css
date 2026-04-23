@@ -1,0 +1,82 @@
+/* ── Video player — reset protecteur ── */
+
+/* Ne jamais toucher au player vidéo */
+#htmlVideoPlayer,
+.htmlVideoPlayer,
+.videoPlayerContainer,
+#videoPlayer,
+video {
+  background: #000 !important;
+  display: block;
+}
+
+/* OSD controls — fond transparent pour ne pas masquer vidéo */
+.videoOsd,
+.videoOsdBottom,
+.osdContent,
+.videoOsdTop {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Scan lines uniquement sur detail page, pas player */
+.videoPlayerContainer .itemBackdrop::after,
+#videoPlayer::after { display: none !important; }
+
+/* ── Mobile responsive ── */
+
+@media (max-width: 600px) {
+  /* Header compact */
+  .skinHeader { padding: 0 10px !important; }
+  .headerTabs .emby-tab-button { font-size: 9px !important; letter-spacing: 0 !important; }
+
+  /* Hero réduit */
+  .itemName { font-size: 1.3rem !important; }
+  .itemMiscInfo { font-size: 9px !important; }
+
+  /* Cards — accent bar plus visible sur petit écran */
+  .cardImageContainer::after { height: 3px; }
+  .cardText { font-size: 8px !important; }
+
+  /* Section labels */
+  .sectionTitle,
+  .sectionTitleButton { font-size: 9px !important; letter-spacing: 0.02em !important; }
+
+  /* Boutons */
+  .emby-button.raised:not(.cancel):not(.cancelButton):not(.btnDelete) {
+    clip-path: none !important;
+    border-radius: 2px !important;
+    font-size: 10px !important;
+    padding: 8px 12px !important;
+  }
+  .emby-button.raised.cancel {
+    font-size: 10px !important;
+    padding: 8px 12px !important;
+  }
+
+  /* Detail page — stack vertical sur mobile */
+  .detailPagePrimaryContainer {
+    flex-direction: column !important;
+  }
+  .detailPageWrapperContainer {
+    padding: 10px !important;
+  }
+  .detailButton { width: 36px !important; height: 36px !important; }
+
+  /* Selects full width */
+  .detailTrackSelect,
+  .emby-select-withcolor { width: 100% !important; }
+
+  /* Tags wrap correct */
+  .tagContainer { flex-wrap: wrap !important; }
+  .genreItem { font-size: 9px !important; padding: 2px 4px !important; }
+
+  /* Scrollbar invisible sur mobile */
+  ::-webkit-scrollbar { width: 2px; }
+}
+
+@media (max-width: 400px) {
+  .itemName { font-size: 1.1rem !important; }
+  .detailButton { width: 30px !important; height: 30px !important; }
+  .headerTabs .emby-tab-button { font-size: 8px !important; gap: 8px !important; }
+}

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jellyfin-cyberpunk-neon — preview</title>
+  <style>
+    /* Reset + base */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Tokens inline (évite dépendance fichier pendant preview) ── */
+    :root {
+      --cn-base:          #0d0a18;
+      --cn-base-alt:      #0a0713;
+      --cn-base-hover:    #13102a;
+      --cn-primary:       #ff2cf7;
+      --cn-secondary:     #ff003c;
+      --cn-tertiary:      #00fff2;
+      --cn-text:          #e8e0ff;
+      --cn-text-muted:    #c9b8ff;
+      --cn-text-accent:   #ff2cf7;
+      --cn-border:        rgba(255,44,247,0.2);
+      --cn-border-strong: rgba(255,44,247,0.35);
+      --cn-border-cyan:   rgba(0,255,242,0.3);
+      --cn-font-mono: 'JetBrains Mono','Courier New',monospace;
+      --cn-font-ui: system-ui,sans-serif;
+    }
+
+    body {
+      background: var(--cn-base);
+      color: var(--cn-text);
+      font-family: var(--cn-font-ui);
+      font-size: 14px;
+      min-height: 100vh;
+    }
+
+    /* ── Header simulé ── */
+    .skinHeader {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 20px;
+      height: 48px;
+      background: var(--cn-base-alt);
+      border-bottom: 1px solid var(--cn-border-strong);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo-mock {
+      width: 26px;
+      height: 26px;
+      background: var(--cn-primary);
+      clip-path: polygon(0 0, 100% 0, 100% 70%, 85% 100%, 0 100%);
+      flex-shrink: 0;
+    }
+
+    .headerTabs {
+      display: flex;
+      gap: 20px;
+      flex: 1;
+      font-family: var(--cn-font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .headerTabs span { color: var(--cn-text-muted); cursor: pointer; }
+    .headerTabs span.active { color: var(--cn-primary); }
+    .headerTabs span:first-child::before { content: "// "; color: var(--cn-tertiary); opacity: 0.7; }
+
+    .header-search {
+      width: 140px;
+      height: 26px;
+      background: var(--cn-base);
+      border: 1px solid var(--cn-border);
+      border-radius: 2px;
+      color: var(--cn-tertiary);
+      font-family: var(--cn-font-mono);
+      font-size: 11px;
+      padding: 0 8px;
+    }
+
+    .header-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cn-primary), var(--cn-tertiary));
+      border: 1px solid var(--cn-primary);
+      flex-shrink: 0;
+    }
+
+    /* ── Hero simulé ── */
+    .itemBackdrop {
+      position: relative;
+      height: 340px;
+      background:
+        linear-gradient(90deg, var(--cn-base) 30%, rgba(13,10,24,0.5) 70%, transparent 100%),
+        linear-gradient(135deg, #1a0635 0%, #0d0a18 70%);
+      display: flex;
+      align-items: flex-end;
+      padding: 32px 40px;
+      overflow: hidden;
+    }
+
+    .itemBackdrop::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,44,247,0.015) 2px, rgba(255,44,247,0.015) 4px);
+      pointer-events: none;
+    }
+
+    .itemBackdrop::before {
+      content: "";
+      position: absolute;
+      top: 16px;
+      right: 40px;
+      width: 60px;
+      height: 3px;
+      background: repeating-linear-gradient(90deg, var(--cn-primary) 0 3px, transparent 3px 6px);
+    }
+
+    .hero-border {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--cn-primary);
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .itemName {
+      font-family: var(--cn-font-mono);
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--cn-text);
+      text-shadow: 1px 1px 0 rgba(255,0,60,0.4);
+      margin-bottom: 8px;
+    }
+
+    .itemName::before { content: "▸ "; color: var(--cn-primary); }
+
+    .itemMiscInfo {
+      font-family: var(--cn-font-mono);
+      font-size: 12px;
+      color: var(--cn-tertiary);
+      margin-bottom: 16px;
+    }
+
+    .itemMiscInfo::before { content: "// "; opacity: 0.6; }
+
+    .btns { display: flex; gap: 10px; }
+
+    .btn-primary {
+      background: var(--cn-primary);
+      color: var(--cn-base);
+      clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%);
+      border: none;
+      padding: 10px 20px;
+      font-family: var(--cn-font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--cn-tertiary);
+      border: 1px solid var(--cn-border-cyan);
+      border-radius: 2px;
+      padding: 10px 20px;
+      font-family: var(--cn-font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+    }
+
+    /* ── Sections / Cards ── */
+    .page-content { padding: 32px 40px; }
+
+    .sectionTitleContainer { margin-bottom: 12px; }
+
+    .sectionTitle {
+      font-family: var(--cn-font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--cn-primary);
+    }
+
+    .sectionTitle::before { content: "[ "; color: var(--cn-secondary); }
+    .sectionTitle::after  { content: " ]"; color: var(--cn-secondary); }
+
+    .itemsContainer {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .card { cursor: pointer; }
+
+    .cardImageContainer {
+      aspect-ratio: 2/3;
+      background: var(--cn-base-alt);
+      border: 1px solid var(--cn-border);
+      border-radius: 3px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.15s;
+    }
+
+    .cardImageContainer::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 4px;
+      right: 4px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cn-primary), transparent 80%);
+    }
+
+    .card:hover .cardImageContainer { border-color: var(--cn-border-strong); }
+    .card.playing .cardImageContainer { border-color: var(--cn-tertiary); }
+    .card.playing .cardImageContainer::after { background: var(--cn-tertiary); }
+
+    .cardText {
+      font-family: var(--cn-font-mono);
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--cn-primary);
+      margin-top: 6px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .cardText-secondary {
+      font-family: var(--cn-font-mono);
+      font-size: 9px;
+      color: var(--cn-text-muted);
+      opacity: 0.6;
+    }
+
+    /* Progress bar */
+    .itemProgressBar { height: 2px; background: rgba(255,44,247,0.15); border-radius: 1px; margin-top: 4px; }
+    .itemProgressBarForeground { height: 100%; background: var(--cn-primary); border-radius: 1px; }
+
+    /* ── Status bar ── */
+    .status-bar {
+      display: flex;
+      gap: 20px;
+      padding: 8px 40px;
+      background: var(--cn-base-alt);
+      border-top: 1px solid var(--cn-border);
+      font-family: var(--cn-font-mono);
+      font-size: 9px;
+      color: var(--cn-text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .status-bar span::before { content: "◦ "; color: var(--cn-tertiary); }
+    .status-bar .live::before { content: "● "; color: var(--cn-primary); }
+    .status-bar .right { margin-left: auto; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--cn-base-alt); }
+    ::-webkit-scrollbar-thumb { background: var(--cn-border-strong); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="skinHeader">
+  <div class="logo-mock"></div>
+  <nav class="headerTabs">
+    <span class="active">Home</span>
+    <span>Movies</span>
+    <span>TV</span>
+    <span>Music</span>
+    <span>Live</span>
+  </nav>
+  <input class="header-search" placeholder="> search_" readonly>
+  <div class="header-avatar"></div>
+</header>
+
+<!-- Hero -->
+<section class="itemBackdrop">
+  <div class="hero-border"></div>
+  <div class="hero-content">
+    <h1 class="itemName">BLADE RUNNER 2049</h1>
+    <p class="itemMiscInfo">SCI-FI · 2017 · 2H 43M · ★ 8.0 · 4K HDR</p>
+    <div class="btns">
+      <button class="btn-primary">▶ JACK IN</button>
+      <button class="btn-secondary">+ QUEUE</button>
+    </div>
+  </div>
+</section>
+
+<!-- Content -->
+<main class="page-content">
+
+  <!-- Continue watching -->
+  <div class="sectionTitleContainer">
+    <span class="sectionTitle">continue.watching</span>
+  </div>
+  <div class="itemsContainer" id="continue"></div>
+
+  <!-- Recently added -->
+  <div class="sectionTitleContainer">
+    <span class="sectionTitle">recently.added</span>
+  </div>
+  <div class="itemsContainer" id="recent"></div>
+
+  <!-- Recommended -->
+  <div class="sectionTitleContainer">
+    <span class="sectionTitle">recommended</span>
+  </div>
+  <div class="itemsContainer" id="recommended"></div>
+
+</main>
+
+<!-- Status bar -->
+<footer class="status-bar">
+  <span class="live">stream.active</span>
+  <span>4k.hdr</span>
+  <span>dolby.atmos</span>
+  <span>uptime 99.8%</span>
+  <span class="right">jellyfin.kushie.dev</span>
+</footer>
+
+<script src="sample-data.js"></script>
+<script>
+function makeCard(title, year, progress) {
+  const pct = progress || 0;
+  return `
+    <div class="card${pct > 0 ? ' playing' : ''}">
+      <div class="cardImageContainer"></div>
+      <div class="cardText">${title}</div>
+      <div class="cardText-secondary">${year}</div>
+      ${pct > 0 ? `<div class="itemProgressBar"><div class="itemProgressBarForeground" style="width:${pct}%"></div></div>` : ''}
+    </div>`;
+}
+
+document.getElementById('continue').innerHTML =
+  CONTINUE_DATA.map(d => makeCard(d.title, d.year, d.progress)).join('');
+document.getElementById('recent').innerHTML =
+  RECENT_DATA.map(d => makeCard(d.title, d.year)).join('');
+document.getElementById('recommended').innerHTML =
+  RECOMMENDED_DATA.map(d => makeCard(d.title, d.year)).join('');
+</script>
+</body>
+</html>

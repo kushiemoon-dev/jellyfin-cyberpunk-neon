@@ -1,0 +1,84 @@
+/* ── Buttons ── */
+
+/* Primary — clip-path angulaire + magenta */
+.emby-button.raised.raised-mini,
+.emby-button.raised:not(.cancel):not(.cancelButton):not(.btnDelete) {
+  background: var(--cn-primary) !important;
+  color: var(--cn-base) !important;
+  clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%);
+  border-radius: 0 !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: var(--cn-size-sm) !important;
+  font-weight: var(--cn-weight-bold) !important;
+  text-transform: uppercase;
+  letter-spacing: var(--cn-tracking);
+  transition: opacity 0.15s ease;
+}
+
+.emby-button.raised:not(.cancel):not(.cancelButton):not(.btnDelete):hover {
+  opacity: 0.85;
+}
+
+/* Secondary raised (class "cancel") — outline cyan */
+.emby-button.raised.cancel {
+  background: transparent !important;
+  color: var(--cn-tertiary) !important;
+  border: 1px solid var(--cn-border-cyan) !important;
+  clip-path: none !important;
+  border-radius: 2px !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: var(--cn-size-sm) !important;
+  font-weight: var(--cn-weight-bold) !important;
+  text-transform: uppercase;
+  letter-spacing: var(--cn-tracking);
+}
+
+.emby-button.raised.cancel:hover {
+  border-color: var(--cn-tertiary) !important;
+  background: rgba(0,255,242,0.05) !important;
+}
+
+/* Secondary — outline cyan */
+.emby-button:not(.raised),
+.emby-button.emby-button-flat {
+  background: transparent !important;
+  color: var(--cn-tertiary) !important;
+  border: 1px solid var(--cn-border-cyan) !important;
+  border-radius: 2px !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: var(--cn-size-sm) !important;
+  text-transform: uppercase;
+  letter-spacing: var(--cn-tracking);
+}
+
+.emby-button:not(.raised):hover {
+  border-color: var(--cn-tertiary) !important;
+  background: rgba(0, 255, 242, 0.05) !important;
+}
+
+/* Play button principal */
+.btnPlay,
+.playButton {
+  background: var(--cn-primary) !important;
+  color: var(--cn-base) !important;
+  clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%);
+  border-radius: 0 !important;
+  font-family: var(--cn-font-mono) !important;
+  font-weight: var(--cn-weight-bold) !important;
+}
+
+/* Cancel / delete rouges */
+.cancelButton,
+.btnDelete {
+  color: var(--cn-secondary) !important;
+  border-color: rgba(255, 0, 60, 0.3) !important;
+}
+
+/* Icon buttons (header icons) */
+.headerButton {
+  color: var(--cn-text-muted) !important;
+}
+
+.headerButton:hover {
+  color: var(--cn-primary) !important;
+}

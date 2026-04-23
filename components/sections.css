@@ -1,0 +1,68 @@
+/* ── Section labels / rows ── */
+
+.sectionTitleContainer,
+.sectionTitleTextContainer {
+  font-family: var(--cn-font-mono) !important;
+}
+
+.sectionTitle,
+.sectionTitleButton {
+  color: var(--cn-primary) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: var(--cn-size-sm) !important;
+  font-weight: var(--cn-weight-bold) !important;
+  text-transform: uppercase;
+  letter-spacing: var(--cn-tracking);
+}
+
+/* [ brackets ] autour des titres de section */
+.sectionTitle::before,
+.sectionTitleButton::before {
+  content: "[ ";
+  color: var(--cn-secondary);
+}
+
+.sectionTitle::after,
+.sectionTitleButton::after {
+  content: " ]";
+  color: var(--cn-secondary);
+}
+
+/* "See all" lien */
+.sectionTitle-cards a,
+.more-button {
+  color: var(--cn-tertiary) !important;
+  font-family: var(--cn-font-mono) !important;
+  font-size: var(--cn-size-xs) !important;
+}
+
+/* Fond page principale */
+.backgroundContainer,
+.mainAnimatedPages,
+.page {
+  background: var(--cn-base) !important;
+}
+
+/* Reset quand vidéo active — .page ne doit pas couvrir le player */
+body:has(video) .page,
+body:has(.videoPlayerContainer) .page {
+  background: transparent !important;
+}
+
+/* Scrollbar theme */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cn-base-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cn-border-strong);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cn-primary);
+}

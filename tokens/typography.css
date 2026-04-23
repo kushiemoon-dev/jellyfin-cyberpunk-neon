@@ -1,0 +1,11 @@
+:root {
+  --cn-font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --cn-font-ui:   system-ui, -apple-system, sans-serif;
+  --cn-size-xs:   0.65rem;
+  --cn-size-sm:   0.75rem;
+  --cn-size-base: 0.875rem;
+  --cn-size-lg:   1rem;
+  --cn-size-xl:   1.25rem;
+  --cn-weight-bold: 700;
+  --cn-tracking:  0.04em;
+}
