@@ -10,7 +10,7 @@ Compatible **Jellyfin 10.11.8+**. Aucun plugin requis.
 2. Coller :
 
 ```css
-@import url('https://cdn.jsdelivr.net/gh/kushiemoon-dev/jellyfin-cyberpunk-neon@latest/skin.css');
+@import url('https://cdn.jsdelivr.net/gh/kushiemoon-dev/jellyfin-cyberpunk-neon@v0.1.0/skin-inline.css');
 ```
 
 3. **Save** → `Ctrl+Shift+R` pour vider le cache navigateur
