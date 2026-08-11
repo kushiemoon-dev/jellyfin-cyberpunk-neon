@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  css-syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install --no-save postcss@8
+      - run: |
+          node -e '
+          const fs = require("fs");
+          const postcss = require("postcss");
+          const files = require("child_process").execSync("find . -name \"*.css\" -not -path \"./node_modules/*\"").toString().trim().split("\n").filter(Boolean);
+          let failed = false;
+          for (const f of files) {
+            try {
+              postcss.parse(fs.readFileSync(f, "utf8"), {from: f});
+              console.log("OK   " + f);
+            } catch (e) {
+              console.log("FAIL " + f + ": " + e.message);
+              failed = true;
+            }
+          }
+          process.exit(failed ? 1 : 0);
+          '
