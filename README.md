@@ -2,7 +2,7 @@
 
 ### jellyfin-cyberpunk-neon
 
-**Cyberpunk-themed CSS skin for Jellyfin — monospace structure, clip-paths, neon accents**
+**Cyberpunk-themed CSS skin for Jellyfin: monospace structure, clip-paths, neon accents**
 
 [![Jellyfin](https://img.shields.io/badge/Jellyfin-10.11.8+-00A4DC?style=flat-square&logo=jellyfin&logoColor=white)](https://jellyfin.org)
 [![Version](https://img.shields.io/badge/version-0.1.0-green?style=flat-square)](https://github.com/kushiemoon-dev/jellyfin-cyberpunk-neon/tags)
@@ -14,7 +14,7 @@
 
 ## Overview
 
-A custom CSS skin for Jellyfin with a cyberpunk aesthetic — monospace type, angular clip-path shapes, bracket-style UI accents, and a restrained neon palette (magenta / red / cyan on a violet-black base). No plugin required, no Jellyfin fork — just a single CSS file loaded through Jellyfin's built-in Custom CSS field.
+A custom CSS skin for Jellyfin with a cyberpunk aesthetic: monospace type, angular clip-path shapes, bracket-style UI accents, and a restrained neon palette (magenta / red / cyan on a violet-black base). No plugin required, no Jellyfin fork, just a single CSS file loaded through Jellyfin's built-in Custom CSS field.
 
 ---
 
